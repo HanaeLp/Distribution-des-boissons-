@@ -3,78 +3,107 @@
 
 float prix;
 char *C, *V;
-int D, B;
+int D, B, A;
 
 float lait(int nbL)
 {
-    if (nbL == 1)
+    if( A == 1 || A == 3 )
     {
-        prix = prix + 1;
-    }
-    else if (nbL == 0)
-    {
-        prix = prix;
+        if (nbL == 1)
+        {
+            prix = prix + 1;
+        }
+        else if (nbL == 0)
+        {
+            prix = prix;
+        }
     }
     return prix;
 }
 char laitC(int nbLC)
 {
-    if(nbLC == 1)
+    if( A == 1 || A == 3 )
     {
-        C = "Avec le lait";
+        if(nbLC == 1)
+        {
+            C = "Avec le lait";
+        }
+        else
+        {
+            C = "Sans lait";
+        }
     }
     else
     {
-        C = "Sans lait";
+        C = "";
     }
     return C;
 }
 float soucre(int nbS)
 {
-    if (nbS == 1)
+    if(A == 1 || A == 2 || A == 3)
     {
-        prix = prix + 0.25;
+        if (nbS == 1)
+        {
+            prix = prix + 0.25;
+        }
+        else if (nbS == 2)
+        {
+            prix = prix + 0.50;
+        }
     }
-    else if (nbS == 2)
-    {
-        prix = prix + 0.50;
-    }
+
     return prix;
 }
 char soucreV( nbSV)
 {
-    if(nbSV == 1)
+    if(A == 1 || A == 2 || A == 3)
     {
-        V = "sucree";
-    }
-    else if(nbSV == 0)
-    {
-        V = "non suree";
+        if(nbSV == 1)
+        {
+            V = "sucree";
+        }
+        else if(nbSV == 0)
+        {
+            V = "non suree";
+        }
+        else
+        {
+            V = "tres suree";
+        }
     }
     else
     {
-        V = "tres suree";
+        V = "";
     }
     return V;
 }
 void QS()
 {
-    do
+    if(A == 1 || A == 2 || A == 3)
     {
-        printf("Choisir la quantite de soucre:(Si oui entrer 1 si non entrer 0 si tres sucres entrer 2)\n");
-        scanf("%d",&D);
+        do
+        {
+            printf("Choisir la quantite de soucre:(Si oui entrer 1 si non entrer 0 si tres sucres entrer 2)\n");
+            scanf("%d",&D);
+        }
+        while(D != 0 && D != 1 && D != 2);
     }
-    while(D != 0 && D != 1 && D != 2);
+
     return D;
 }
 void QL()
 {
-    do
+    if( A == 1 || A == 3 )
     {
-        printf("Voulez-vous ajouter le lait ?(Si oui entrer 1 si non entrer 0)\n");
-        scanf("%d", &B);
+        do
+        {
+            printf("Voulez-vous ajouter le lait ?(Si oui entrer 1 si non entrer 0)\n");
+            scanf("%d", &B);
+        }
+        while(B!=0 && B!=1);
     }
-    while(B!=0 && B!=1);
+
     return B;
 }
 
@@ -82,8 +111,8 @@ void QL()
 int main()
 {
     char *Y, W;
-    int A;
-    do{
+    do
+    {
         do
         {
             printf("Veuillez enter votre choix\n");
@@ -98,47 +127,35 @@ int main()
         case 1 :
             Y = "cafe";
             prix = 2;
-            QL();
-            lait(B);
-            laitC(B);
-            QS();
-            soucre(D);
-            soucreV(D);
-            printf("Vous devez payer %f DH\n", prix);
-            printf("Votre %s est %s %s pret",Y, V, C );
             break;
         case 2 :
             Y = "The";
             prix = 2;
-            QS();
-            soucre(D);
-            soucreV(D);
-            printf("Vous devez payer %f DH\n", prix);
-            printf("Votre %s esr %s pret", Y, V);
             break;
         case 3 :
             Y = "chocolat";
             prix = 3.5;
-            QL();
-            lait(B);
-            laitC(B);
-            QS();
-            soucre(D);
-            soucreV(D);
-            printf("Vous devez payer %f DH\n", prix);
-            printf("Votre %s esr %s %s pret",Y, V, C );
             break;
         case 4 :
             prix = 3;
             Y = "Soda";
-            printf("Vous devez payer %f DH\n", prix);
-            printf("Votre %s est pret",Y );
             break;
         }
-        do{
-           printf("\nSi vous voullez refaire une autre commende clique sur Y, si non clique sur Q\n");
-           scanf("%s", &W);
-        }while(W != 'Y' && W != 'Q');
-    }while(W != 'Q');
+        QL();
+        lait(B);
+        laitC(B);
+        QS();
+        soucre(D);
+        soucreV(D);
+        printf("Vous devez payer %f DH\n", prix);
+        printf("Votre %s est %s %s pret",Y, V, C );
+        do
+        {
+            printf("\nSi vous voullez refaire une autre commende clique sur Y, si non clique sur Q\n");
+            scanf("%s", &W);
+        }
+        while(W != 'Y' && W != 'Q');
+    }
+    while(W != 'Q');
     exit(0);
 }
