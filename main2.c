@@ -81,59 +81,64 @@ void QL()
 
 int main()
 {
-    char *Y;
+    char *Y, W;
     int A;
-    do
-    {
-        printf("Veuillez enter votre choix\n");
-        printf("Soit : 'cafe' entrer 1, 'The' entrer 2, 'chocolat' entrer 3, 'Soda' entrer 4\n");
-        printf("****************************************\n");
-        scanf("%d", &A);
-    }
-    while(A!=1 && A!=2 && A!=3 && A!=4);
+    do{
+        do
+        {
+            printf("Veuillez enter votre choix\n");
+            printf("Soit : 'cafe' entrer 1, 'The' entrer 2, 'chocolat' entrer 3, 'Soda' entrer 4\n");
+            printf("****************************************\n");
+            scanf("%d", &A);
+        }
+        while(A!=1 && A!=2 && A!=3 && A!=4);
 
-    switch (A)
-    {
-    case 1 :
-        Y = "cafe";
-        prix = 2;
-        QL();
-        lait(B);
-        laitC(B);
-        QS();
-        soucre(D);
-        soucreV(D);
-        printf("Vous devez payer %f DH\n", prix);
-        printf("Votre %s est %s %s pret",Y, V, C );
-        break;
-    case 2 :
-        Y = "The";
-        prix = 2;
-        QS();
-        soucre(D);
-        soucreV(D);
-        printf("Vous devez payer %f DH\n", prix);
-        printf("Votre %s esr %s pret", Y, V);
-        break;
-    case 3 :
-        Y = "chocolat";
-        prix = 3.5;
-        QL();
-        lait(B);
-        laitC(B);
-        QS();
-        soucre(D);
-        soucreV(D);
-        printf("Vous devez payer %f DH\n", prix);
-        printf("Votre %s esr %s %s pret",Y, V, C );
-        break;
-    case 4 :
-        prix = 3;
-        Y = "Soda";
-        printf("Vous devez payer %f DH\n", prix);
-        printf("Votre %s est pret",Y );
-        break;
-    default :
-        printf("Erreur");
-    }
+        switch (A)
+        {
+        case 1 :
+            Y = "cafe";
+            prix = 2;
+            QL();
+            lait(B);
+            laitC(B);
+            QS();
+            soucre(D);
+            soucreV(D);
+            printf("Vous devez payer %f DH\n", prix);
+            printf("Votre %s est %s %s pret",Y, V, C );
+            break;
+        case 2 :
+            Y = "The";
+            prix = 2;
+            QS();
+            soucre(D);
+            soucreV(D);
+            printf("Vous devez payer %f DH\n", prix);
+            printf("Votre %s esr %s pret", Y, V);
+            break;
+        case 3 :
+            Y = "chocolat";
+            prix = 3.5;
+            QL();
+            lait(B);
+            laitC(B);
+            QS();
+            soucre(D);
+            soucreV(D);
+            printf("Vous devez payer %f DH\n", prix);
+            printf("Votre %s esr %s %s pret",Y, V, C );
+            break;
+        case 4 :
+            prix = 3;
+            Y = "Soda";
+            printf("Vous devez payer %f DH\n", prix);
+            printf("Votre %s est pret",Y );
+            break;
+        }
+        do{
+           printf("\nSi vous voullez refaire une autre commende clique sur Y, si non clique sur Q\n");
+           scanf("%s", &W);
+        }while(W != 'Y' && W != 'Q');
+    }while(W != 'Q');
+    exit(0);
 }
